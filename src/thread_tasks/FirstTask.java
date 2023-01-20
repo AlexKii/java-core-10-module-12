@@ -12,17 +12,17 @@ public class FirstTask {
     }
 
     private static final long START = System.currentTimeMillis();
-    private static final Thread PERSECOND =new Thread(() ->
-            System.out.println("Start was " + (System.currentTimeMillis() - START) / 1000 + " second(s) ago"));
-    private static final Thread PERFIVESECONDS = new Thread(() ->
+    private static final Thread PER_SECOND =new Thread(() ->
+            System.out.println("The start was " + (System.currentTimeMillis() - START) / 1000 + " second(s) ago"));
+    private static final Thread PER_FIVE_SECONDS = new Thread(() ->
             System.out.println("5 seconds have passed"));
 
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(2);
 
     public static void runTime() {
 
-        scheduler.scheduleAtFixedRate(PERSECOND, 1, 1, SECONDS);
-        scheduler.scheduleAtFixedRate(PERFIVESECONDS, 5, 5, SECONDS);
+        scheduler.scheduleAtFixedRate(PER_SECOND, 1, 1, SECONDS);
+        scheduler.scheduleAtFixedRate(PER_FIVE_SECONDS, 5, 5, SECONDS);
 
         scheduler.schedule(scheduler::shutdown, 17, SECONDS);
     }

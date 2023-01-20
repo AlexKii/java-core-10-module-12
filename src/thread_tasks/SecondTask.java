@@ -3,8 +3,6 @@ package thread_tasks;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import static java.lang.Thread.sleep;
-
 public class SecondTask {
 
     private SecondTask() {
@@ -26,7 +24,7 @@ public class SecondTask {
             A.start();
             B.start();
             C.start();
-            sleep(100);
+            LIST.wait(100);
             D.start();
         }
     }
